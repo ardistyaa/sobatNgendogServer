@@ -1,5 +1,5 @@
-import ChickenService from '../services/chickenService.js';
-import { formatSuccess, formatError } from '../utils/responseFormatter.js';
+import ChickenService from '../services/chickenService';
+import { formatSuccess, formatError } from '../utils/responseFormatter';
 
 export const getAllChickens = async (req, res, next) => {
   try {

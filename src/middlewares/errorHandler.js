@@ -1,4 +1,4 @@
-import { formatError } from '../utils/responseFormatter.js';
+import { formatError } from '../utils/responseFormatter';
 
 export const errorHandler = (err, req, res, next) => {
   console.error(err.stack);

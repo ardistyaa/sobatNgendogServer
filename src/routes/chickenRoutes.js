@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as chickenController from '../controllers/chickenController.js';
+import * as chickenController from '../controllers/chickenController';
 
 const router = Router();
 

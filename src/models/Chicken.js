@@ -1,7 +1,6 @@
 import dbPool from '../config/database';
 import { calculateCurrentAge, formatDateReadable } from '../utils/dateUtils';
 
-
 class Chicken {
 
 static async findAll() {

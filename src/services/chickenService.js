@@ -1,4 +1,4 @@
-import Chicken from '../models/Chicken.js';
+import Chicken from '../models/Chicken';
 
 class ChickenService {
   static async getAllChickens() {

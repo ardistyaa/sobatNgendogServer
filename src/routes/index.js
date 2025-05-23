@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import chickenRoutes from './chickenRoutes.js';
+import chickenRoutes from './chickenRoutess';
 
 const router = Router();
 
