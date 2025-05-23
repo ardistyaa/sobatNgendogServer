@@ -7,7 +7,7 @@ class Egg{
             const [rows] = await dbPool.query(`SELECT * FROM egg_price`)
             return rows;
         } catch (error) {
-            throw new Error(`Error fethcing all egg price : ${error.message}`);
+            throw new Error(`Error fetching all egg price : ${error.message}`);
         }
     } 
 
