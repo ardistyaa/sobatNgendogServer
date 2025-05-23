@@ -1,12 +1,12 @@
-import pool from '../config/database.js';
-import { calculateCurrentAge, formatDateReadable } from '../utils/dateUtils.js';
+import dbPool from '../config/database';
+import { calculateCurrentAge, formatDateReadable } from '../utils/dateUtils';
 
 
 class Chicken {
 
 static async findAll() {
   try {
-    const [rows] = await pool.query(`
+    const [rows] = await dbPool.query(`
       SELECT 
         c.*, 
         IFNULL(SUM(cm.dead_quantity), 0) AS dead_quantity,
@@ -60,7 +60,7 @@ static async findAll() {
 
 static async findByCode(chickenCode) {
   try {
-    const [rows] = await pool.query(`
+    const [rows] = await dbPool.query(`
       SELECT 
         c.*, 
         COALESCE(cm.total_mortality, 0) AS total_mortality,
@@ -131,7 +131,7 @@ static async findByCode(chickenCode) {
     const { chicken_code, quantity, arrival_date, arrival_age, arrival_price, status } = chickenData;
     
     try {
-      const [result] = await pool.query(
+      const [result] = await dbPool.query(
         'INSERT INTO chicken (chicken_code, quantity, arrival_date, arrival_age, arrival_price, status) VALUES (?, ?, ?, ?, ?, ?)',
         [chicken_code, quantity, arrival_date, arrival_age, arrival_price, status]
       );
@@ -146,7 +146,7 @@ static async findByCode(chickenCode) {
     const { quantity, arrival_date, arrival_age, arrival_price, status } = chickenData;
     
     try {
-      const [result] = await pool.query(
+      const [result] = await dbPool.query(
         'UPDATE chicken SET quantity = ?, arrival_date = ?, arrival_age = ?, arrival_price = ?, status = ? WHERE chicken_code = ?',
         [quantity, arrival_date, arrival_age, arrival_price, status, chickenCode]
       );
@@ -159,7 +159,7 @@ static async findByCode(chickenCode) {
 
   static async delete(chickenCode) {
   try {
-    const [result] = await pool.query(
+    const [result] = await dbPool.query(
       'UPDATE chicken SET is_deleted = TRUE WHERE chicken_code = ?',
       [chickenCode]
     );
